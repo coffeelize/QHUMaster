@@ -1,22 +1,134 @@
-\documentclass{myclass}
+\documentclass{QHUMaster}
 \usepackage{graphicx}
 \usepackage{newtxtext}
+\usepackage{lipsum}
+\usepackage{zhlipsum}
+
+
 
 \begin{document}
-
-\renewcommand{\title}{Design of production line for physical recycling and separation of waste photovoltaic modules} % 英文标题
-\renewcommand{\biaoti}{废旧光伏组件物理回收分离装备产线设计}  % 中文标题
+%%% 中文封面内容
+\renewcommand{\title}{The sunset is like a rustling duck, and the autumn water is like a long sky} % 英文标题
+\renewcommand{\biaoti}{落霞与孤鹜齐飞秋水共长天一色}  % 中文标题
 \renewcommand{\xueyuan}{机械工程学院}
 \renewcommand{\zhuanye}{机械电子工程}
-\renewcommand{\xingming}{吴智朋}
+\renewcommand{\xingming}{coffeelze}
 \renewcommand{\xuehao}{YS210802020148}
-\renewcommand{\daoshi}{高德东}
+\renewcommand{\daoshi}{Coffeelze}
 \renewcommand{\grade}{2021}
-\renewcommand{\research}{光伏组件回收}
+\renewcommand{\research}{滕王阁诗序}
 \renewcommand{\dateOfGrant}{2021年5月20日}
 \renewcommand{\startAndFinish}{2020.11-2023.03}
 
-%%% 生成封面
+%%% 英文封面填写内容
+\renewcommand{\enMentorName}{Coffeelize}
+\renewcommand{\enAuthor}{Zhipeng Wu}
+\renewcommand{\enMajor}{Master of Engineering}
+\renewcommand{\enSpecificMajor}{Mechanical and Electronic Engineering}
+\renewcommand{\enDepartment}{College of Mechanical Engineering}
+\renewcommand{\enStartAndFinish}{November, 2020—March, 2023}
+
+
+
+%%% 中文封面
 \titlepage
-	
+%%% 英文封面
+\enTitlepage
+
+%%%
+%前言部分
+%%%
+\frontmatter
+
+%%% 中文摘要
+\begin{zhAbsract}{关键词1；关键词2}
+	\zhlipsum[1]
+\end{zhAbsract}
+%%% 英文摘要
+\begin{enAbsract}{keyword1; keyword2}
+	\lipsum[1]
+\end{enAbsract}
+
+%%% 目录
+\tableofcontents
+\addcontentsline{toc}{chapter}{目\quad 录}
+\clearpage
+\setcounter{page}{1}
+
+
+%%%
+%文章主体
+%文章结构请勿删除，配合相应的页面样式使用
+%%%
+\mainmatter
+
+\songti\zihao{-4} 
+
+\chapter{时运不齐，命途多舛}
+\section{冯唐易老，李广难封}
+\zhlipsum[1-3]
+\section{老当益壮，宁移白首之心}
+\zhlipsum[1-5]
+\section{穷且益坚，不坠青云之志}
+\subsection{三尺微命，一介书生}
+这是参考论文引用样式\cite{kocher99,cnproceed}
+
+\zhlipsum[1-3]
+\chapter{豫章故郡，洪都新府}
+\section{千里逢迎}
+\zhlipsum[1-3]
+\section{高朋满座}
+\zhlipsum[1-5]
+\section{腾蛟起凤，孟学士之词宗}
+\chapter{时维九月，序属三秋}
+\zhlipsum[1-3]
+\section{潦水尽而寒潭清}
+\zhlipsum[1-5]
+\section{烟光凝而暮山紫}
+\chapter{遥襟甫畅，逸兴遄飞}
+\zhlipsum[1-3]
+\section{落霞与孤鹜齐飞，秋水共长天一色}
+\zhlipsum[1-5]
+
+%%%
+%论文后部
+%%%
+\backmatter
+%=======
+%打印参考文献
+%=======
+\bibdatabase{bib/reference}
+\printbib
+
+%\chapter*{附\quad 录}\addcontentsline{toc}{chapter}{附\quad 录}
+\chapter{附\quad 录}
+是正文主体的补充项目，并不是必需的。下列内容可以作为附录：
+（1）为了整篇材料的完整，插入正文又有损于编排条理性和逻辑性的材料；
+（2）由于篇幅过大，或取材于复制件不便编入正文的材料；
+（3）对一般读者并非必须阅读，但对本专业人员有参考价值的资料；
+（如外文文献复印件及中文译文、公式的推导、程序流程图、图纸、数据表格等）
+附录按“附录A，附录B，附录A1“等编号。
+请单击样式“附录1”为第1级的附录编号，样式“附录2”为第二级的附录编号，样式“附录3”控制第三级别的样式。
+
+\chapter{致\quad 谢}
+
+感谢我的导师XXX老师，谢谢他对我的悉心指导。
+他无私的关爱和严谨的治学态度，将激励我不断的进取，走好以后的道路。
+其次，还要感谢在这四年的学习中教过我的所有老师们，谢谢他们传授给了我知识。
+我的同学XXX，在写作的过程中给我提供了一些宝贵的资料和建议，在此一并感谢！
+
+%%%
+% 作者在读期间科研成果简介
+%%%
+\Achievements
+一、发表论文情况
+
+1.Article here ...
+
+\blank
+
+二、参与课题情况
+
+三、获奖情况
+
 \end{document}
