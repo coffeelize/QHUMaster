@@ -5,13 +5,19 @@
 %%% 页边距
 \RequirePackage[top=2.54cm, bottom=2.54cm, left=3.17cm, right=3.17cm]{geometry}
 
-%%% 常用宏包
+%%% 必要宏包，请勿删除
 \RequirePackage{graphicx}
+\RequirePackage{caption}
+\captionsetup[table]{labelsep=period} %图表编号与标题之间的分隔符
+\captionsetup[figure]{labelsep=period}
+\RequirePackage{amsmath} %公式
+\RequirePackage{zhnumber} %阿拉伯数字转中文数字
 \RequirePackage{setspace} %调整行间距
 \RequirePackage{fancyhdr} %设置页眉页码
 \RequirePackage{lastpage} %记录最后一页
 \RequirePackage{etoolbox} %appto命令
 \pagestyle{fancy} %开启fancyhdr
+
 
 %%% 前言部分页面样式
 \fancypagestyle{frontmatterstyle}{% 定义页面样式frontmatterstyle
@@ -75,10 +81,10 @@
 	\thispagestyle{empty}
 	
 \begin{flushleft}
-	\begin{minipage}{4cm}
+	\begin{minipage}{3.5cm}
 		\includegraphics[width=3.5cm]{imgs/QHULogo}
 	\end{minipage}
-	\hspace{0.1cm}
+	\hspace{0.2cm}
 	\begin{minipage}{0.6\linewidth}
 		\songti \zihao{5}
 		\begin{tabular}{@{}ll@{}}
@@ -220,59 +226,77 @@
 %
 %%%
 
-\renewcommand{\contentsname}{\heiti\zihao{3} 目\quad 录}
-\setcounter{tocdepth}{3}
+% 设置目录深度
 \setcounter{secnumdepth}{3}
-\RequirePackage[titles]{tocloft}
-\renewcommand\cftchapdotsep{0.5} %虚线间隔
-\renewcommand\cftdotsep{0.5} %虚线间隔
-\setlength{\cftbeforesecskip}{0pt}  %6pt
-\setlength{\cftbeforechapskip}{0pt} %6pt
-\setlength{\cftbeforesubsecskip}{0pt} %6pt
+\setlength{\parindent}{2em}
 
-\renewcommand\cftchapfont{\zihao{-4}\songti}  % 目录中一级标题
-\renewcommand\cftsecfont{\zihao{-4} \songti}
-\renewcommand\cftsubsecfont{\zihao{-4} \songti}
+
+\RequirePackage[titles]{tocloft}
+%\renewcommand{\cftdot}{$\cdot$} %中间点
+\renewcommand{\cftdotsep}{0.5} %设置点间距
+\renewcommand{\cftchapafterpnum}{\vspace{2pt}} %设置chapter章节后间距
+\renewcommand{\cftchapleader}{\cftdotfill{\cftchapdotsep}}%设置章节标题与页码之间的导引符
+\renewcommand{\cftsecleader}{\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftchapdotsep}{\cftdotsep} 
+
+\setlength{\cftbeforechapskip}{0pt} %一级标题章节间隔
+\setlength{\cftbeforesecskip}{0pt} %二级标题章节间隔
+\setlength{\cftbeforesubsecskip}{0pt} %三级标题间隔
+
+%目录章标题字体样式
+\renewcommand\cftchapfont{\songti\zihao{4}}
+\renewcommand\cftsecfont{\songti\zihao{4}}
+\renewcommand\cftsubsecfont{\songti\zihao{4}}
 \renewcommand\cftchappagefont{\mdseries}
-\setlength\cftbeforetoctitleskip{0pt} %24
-\setlength\cftaftertoctitleskip{0pt} %18
 
 %%%
-%
 % 章节标题设置
-% 一级标题字体为黑体三号加粗
-% 二级标题字体为黑体四号
-% 三级标题字体为黑体小四
-%
+% 一级标题字体为居中黑体三号加粗，段前24磅，段后18磅
+% 二级标题字体为黑体四号，段前24磅，段后6磅
+% 三级标题字体为黑体小四，段前12磅，段后6磅
 %%%
 
 \RequirePackage{titlesec}
 
-% 章节(一级)标题
-\def\CTEX@chapter@nameformat{\heiti\zihao{3}} %\bfseries
-\def\CTEX@chapter@titleformat{\heiti\zihao{3}}
-\def\CTEX@chapter@beforeskip{24pt}
-\def\CTEX@chapter@afterskip{18pt}
+%目录标题
+\renewcommand{\chaptername}{第\zhnumber{\thechapter}章}
+\renewcommand{\contentsname}{\heiti\zihao{3} 目\quad 录}
+\titlespacing{\contentsname}{0pt}{0pt}{0pt}
+
+% 章节标题
+
+\titleformat{\contentsname}{\bfseries\zihao{-2}\songti}{}{0pt}{}
+\titleformat{\chapter}{\centering\bfseries\heiti\zihao{3}}{\chaptername}{0.4em}{}
+\titlespacing{\chapter}{0pt}{0pt}{18pt}
 
 % 二级标题
-\def\CTEX@section@format{\heiti\zihao{4}}
-\def\CTEX@section@beforeskip{24pt}
-\def\CTEX@section@afterskip{6pt}
+\titleformat{\section}{\heiti\zihao{4}}{\thesection}{0.4em}{}
+\titlespacing{\section}{0pt}{12pt}{6pt}
 
 % 三级标题
-\def\CTEX@subsection@format{\heiti\zihao{-4}}
-\def\CTEX@subsection@beforeskip{12pt}
-\def\CTEX@subsection@afterskip{6pt}
+\titleformat{\subsection}{\heiti\zihao{-4}}{\thesubsection}{0.4em}{}
+\titlespacing{\subsection}{0pt}{12pt}{6pt}
 
-\def\CTEX@subsubsection@format{\heiti\zihao{-4}}
-\def\CTEX@subsubsection@beforeskip{2ex \@plus 1ex \@minus .2ex}
-\def\CTEX@subsubsection@afterskip{1.0ex \@plus .2ex}
+% 四级标题
+%\titleformat{\subsubsection}{\heiti\zihao{-4}}{\thesubsubsection}{0.4em}{}
+%\titlespacing{\subsection}{0pt}{0pt}{0pt}
 
 %%%
-%
+% 定制三级标题样式，标题格式为(1)、(2)...
+%%%
+\RequirePackage{regexpatch}
+\newcommand{\subsubsectionnum}{\arabic{subsubsection}}
+\xpatchcmd*{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}{(\arabic{subsubsection})}{}{}
+\titleformat{\subsubsection}
+{\zihao{-4}\songti}{(\subsubsectionnum)}{0.5em}{}
+
+%%%
 %参考文献
-%
 %%%
+\RequirePackage{natbib}
+\setlength{\bibsep}{0pt} %参考文献间距
+%\renewcommand{\bibfont}{\small} %参考文献字号
 \RequirePackage[sort&compress]{gbt7714}
 \newtoks\bibdatabase
 \newcommand{\printbib}{
@@ -285,9 +309,7 @@
 }
 
 %%%
-%
 %科研成果
-%
 %%%
 
 \newcommand{\blank}{%
